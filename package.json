@@ -1,0 +1,45 @@
+{
+  "name": "knex-react-native-sqlite",
+  "description": "Knex.js dialect for SQLite on React Native",
+  "version": "1.1.0",
+  "author": "Red Axle",
+  "license": "MIT",
+  "main": "./index.js",
+  "scripts": {
+    "prepublish": "webpack --mode=production",
+    "clean": "[ -d dist ] && rm -r dist",
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development",
+    "lint": "eslint src tests *.js",
+    "format": "prettier --write *.js src tests",
+    "test": "jest"
+  },
+  "dependencies": {
+    "knex": "^2.1.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-jest": "^26.5.1",
+    "jest": "^28.1.0",
+    "prettier": "^2.6.2",
+    "stream-browserify": "^3.0.0",
+    "timers-browserify": "^2.0.12",
+    "tty-browserify": "^0.0.1",
+    "url": "^0.11.0",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "peerDependencies": {
+    "react-native-sqlite-storage": "^5.0.1"
+  },
+  "keywords": [
+    "knex",
+    "react-native",
+    "sqlite",
+    "sqlite3"
+  ]
+}
