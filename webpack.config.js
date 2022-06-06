@@ -25,4 +25,18 @@ module.exports = {
       url: require.resolve("url"),
     },
   },
+  module: {
+    rules: [
+      {
+        test: /columncompiler\.js$/,
+        loader: "string-replace-loader",
+        options: {
+          multiple: [
+            { search: "/(?<!\\\\)'/g", replace: "/not_supported_regex/g" },
+            { search: "/(?<!')'(?!')/g", replace: "/not_supported_regex/g" },
+          ],
+        },
+      },
+    ],
+  },
 };
