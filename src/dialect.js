@@ -51,16 +51,30 @@ class RNSqliteDialect extends Client_SQLite3 {
 
   processResponse(obj, runner) {
     const resp = obj.response;
-    if (obj.output) return obj.output.call(runner, resp);
+
+    const fetchRows = (resp) => {
+      const rows = [];
+      const numRows = resp.rows.length;
+      for (let i = 0; i < numRows; i++) {
+        rows.push(clone(resp.rows.item(i)));
+      }
+      return rows;
+    };
+
+    if (obj.output && /^(pragma|select)\s+/i.test(obj.sql)) {
+      return obj.output.call(runner, fetchRows(resp));
+    } else if (obj.output) {
+      return obj.output.call(runner, resp);
+    }
+
     switch (obj.method) {
       case "pluck":
       case "first":
       case "select": {
-        let results = [];
-        for (let i = 0, l = resp.rows.length; i < l; i++) {
-          results[i] = clone(resp.rows.item(i));
+        let results = fetchRows(resp);
+        if (obj.method === "pluck") {
+          results = map(results, obj.pluck);
         }
-        if (obj.method === "pluck") results = map(results, obj.pluck);
         return obj.method === "first" ? results[0] : results;
       }
       case "insert":
