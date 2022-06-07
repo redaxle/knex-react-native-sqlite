@@ -1,12 +1,12 @@
 {
   "name": "knex-react-native-sqlite",
   "description": "Knex.js dialect for SQLite on React Native",
-  "version": "1.1.03",
+  "version": "1.1.4",
   "author": "Red Axle",
   "license": "MIT",
   "main": "./index.js",
   "scripts": {
-    "prepublish": "webpack --mode=production",
+    "prepack": "webpack --mode=production",
     "clean": "[ -d dist ] && rm -r dist",
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development",
