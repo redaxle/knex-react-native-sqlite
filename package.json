@@ -1,7 +1,7 @@
 {
   "name": "knex-react-native-sqlite",
   "description": "Knex.js dialect for SQLite on React Native",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "Red Axle",
   "license": "MIT",
   "main": "./index.js",
@@ -44,7 +44,7 @@
     "webpack-cli": "^4.9.2"
   },
   "peerDependencies": {
-    "react-native-sqlite-storage": "^5.0.1"
+    "react-native-sqlite-storage": ">= 5.0.0 < 7"
   },
   "keywords": [
     "knex",
